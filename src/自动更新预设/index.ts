@@ -16,7 +16,7 @@ const import_preset: Button = {
       cancelButton: '取消',
       leftAlign: true,
     });
-    if (result === SillyTavern.POPUP_RESULT.CANCELLED) {
+    if (result !== SillyTavern.POPUP_RESULT.AFFIRMATIVE) {
       return;
     }
     const success = await importRawPreset(preset_name, preset_content);
