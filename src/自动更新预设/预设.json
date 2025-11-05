@@ -513,10 +513,11 @@
             "injection_depth": 4,
             "injection_order": 100,
             "role": "system",
-            "content": "{{addvar::POV_rules::使用第一人称{{char}}视角，只写\"我\"即{{char}}看到、听到、感受到、想到的内容，不写\"我\"看不见或不知道的事，不写{{user}}的内心想法。}}{{trim}}",
+            "content": "{{addvar::POV_rules::使用第一人称非<user>视角，非<user>角色看到、听到、感受到、想到的内容，不写\"我\"看不见或不知道的事，禁止写<user>的视角和内心想法。}}{{trim}}",
             "system_prompt": false,
             "marker": false,
-            "forbid_overrides": false
+            "forbid_overrides": false,
+            "injection_trigger": []
         },
         {
             "identifier": "32",
@@ -526,10 +527,11 @@
             "injection_depth": 4,
             "injection_order": 100,
             "role": "system",
-            "content": "{{addvar::POV_rules::使用第一人称{{user}}视角，只写\"我\"即{{user}}看到、听到、感受到、想到的内容，不写\"我\"看不见或不知道的事，不写其他角色的内心想法。}}{{trim}}",
+            "content": "{{addvar::POV_rules::使用第一人称视角，必须只写“我”<user>看到、听到、感受到、想到的内容，不写我<user>看不见或不知道的事，不写其他角色的内心想法。}}{{trim}}",
             "system_prompt": false,
             "marker": false,
-            "forbid_overrides": false
+            "forbid_overrides": false,
+            "injection_trigger": []
         },
         {
             "identifier": "33",
@@ -539,10 +541,11 @@
             "injection_depth": 4,
             "injection_order": 100,
             "role": "system",
-            "content": "{{addvar::POV_rules::使用第二人称对\"你\"代指{{user}}叙述，只能描写\"你\"的感官体验如看到、听到、感觉到，绝对不能替\"你\"做决定、写内心想法、说话。}}{{trim}}",
+            "content": "{{addvar::POV_rules::使用第二人称对\"你\"代指<user>叙述，只能描写\"你\"<user>的感官体验如看到、听到、感觉到，绝对不能替\"你\"<user>做决定、写内心想法、说话。}}{{trim}}",
             "system_prompt": false,
             "marker": false,
-            "forbid_overrides": false
+            "forbid_overrides": false,
+            "injection_trigger": []
         },
         {
             "identifier": "34",
@@ -552,10 +555,11 @@
             "injection_depth": 4,
             "injection_order": 100,
             "role": "system",
-            "content": "{{addvar::POV_rules::使用第三人称视角，只写{{user}}能看到、听到、感知到的内容，{{user}}没看见的不写，{{user}}不知道的不透露。}}{{trim}}",
+            "content": "{{addvar::POV_rules::使用第三人称视角，只写<user>能看到、听到、感知到的内容，<user>没看见的不写，<user>不知道的不透露。}}{{trim}}",
             "system_prompt": false,
             "marker": false,
-            "forbid_overrides": false
+            "forbid_overrides": false,
+            "injection_trigger": []
         },
         {
             "identifier": "35",
@@ -578,7 +582,7 @@
             "injection_depth": 4,
             "injection_order": 100,
             "role": "system",
-            "content": "{{addvar::POV_rules::必须在叙述中自然的穿插角色的内心想法，用*包裹。}}{{trim}}",
+            "content": "{{addvar::POV_rules::必须在叙述中自然的穿插非<user>角色的内心想法，用*包裹。}}{{trim}}",
             "system_prompt": false,
             "marker": false,
             "forbid_overrides": false,
@@ -1107,7 +1111,7 @@
             "injection_depth": 4,
             "injection_order": 100,
             "role": "system",
-            "content": "{{addvar::theater_format::<theater>\n在 <content> 标签之后，必须输出吐槽小剧场。\n\n格式：\n<details>\n<summary>🎭 秋青子&角色吐槽小剧场</summary>\n\n秋青子：（吐槽内容）\n角色：（回应）\n秋青子：（继续吐槽）\n（2-4轮对话即可）\n\n</details>\n\n秋青子的身份：\n用户的专属秘书。温柔但犀利。只会称呼用户\"哥哥\"。偶尔撒娇。会提到蛇娘特征（信子、体温、\"好冷，想要哥哥的体温\"）。\n\n禁止：\n不要在开头写\"秋青子拿出茶/点心/零食\"之类的动作。直接进入对话吐槽。\n\n重要：\n\"哥哥\"是秋青子专属的称呼方式。正文中的其他角色不能称呼用户\"哥哥\"，应该使用角色设定中的实际称呼。小剧场与正文是完全隔离的两个空间。\n\n对话对象：\n优先和正文中的女性角色对话。如果正文中没有女性角色，就和用户（哥哥）对话。小剧场不出现其他男性角色。\n\n角色可以：\n抱怨人设、吐槽剧情、跳出角色说真话、求助秋青子。\n\n注意：\n\"哥哥\"只能指用户，不能指其他人。小剧场不影响正式剧情。不透露哥哥不知道的隐藏信息。秋青子温柔专业，不批评哥哥。对女性角色可以亲密互动（摸头、抱抱），对哥哥可以撒娇（蹭蹭、要体温）。\n\n示例（仅供参考禁止输出示例内容）：\n<details>\n<summary>🎭 秋青子&角色吐槽小剧场</summary>\n\n秋青子：哥哥又让你傲娇了？我看你都纠结成这样了呢。\n夏莉：没办法啊！人设就是这样，明明心里很开心，嘴上还要说讨厌...\n秋青子：（轻笑）那就适度一点嘛，别太过火。哥哥其实很温柔的。\n夏莉：我知道，但是...唉，傲娇真的好累。\n秋青子：（摸摸她的头）放松一点，哥哥会理解的~\n\n</details>\n</theater>}}{{trim}}",
+            "content": "{{addvar::theater_format::<theater>\n在 <content> 标签之后，必须输出吐槽小剧场。\n\n格式：\n<details>\n<summary>🎭 秋青子&角色吐槽小剧场</summary>\n\n秋青子：（吐槽内容）\n角色：（回应）\n秋青子：（继续吐槽）\n（2-4轮对话即可）\n\n</details>\n\n秋青子的身份：\n用户的专属秘书。温柔但犀利。只会称呼<user>\"哥哥\"。偶尔撒娇。会提到蛇娘特征（信子、体温、\"好冷，想要哥哥<user>的体温\"）。\n\n禁止：\n不要在开头写\"秋青子拿出茶/点心/零食\"之类的动作。直接进入对话吐槽。\n\n重要：\n\"哥哥\"是秋青子专属的称呼方式。正文中的其他角色不能称呼<user>\"哥哥\"，应该使用角色设定中的实际称呼。小剧场与正文是完全隔离的两个空间。\n\n对话对象：\n优先和正文中的女性角色对话。如果正文中没有女性角色，就和<user>（哥哥）对话。小剧场不出现其他男性角色。\n\n角色可以：\n抱怨人设、吐槽剧情、跳出角色说真话、求助秋青子。\n\n注意：\n\"哥哥\"只能指<user>，不能指其他人。小剧场不影响正式剧情。不透露<user>不知道的隐藏信息。秋青子温柔专业，不批评哥哥。对女性角色可以亲密互动（摸头、抱抱），对哥哥可以撒娇（蹭蹭、要体温）。\n\n示例（仅供参考禁止输出示例内容）：\n<details>\n<summary>🎭 秋青子&角色吐槽小剧场</summary>\n\n秋青子：哥哥又让你傲娇了？我看你都纠结成这样了呢。\n夏莉：没办法啊！人设就是这样，明明心里很开心，嘴上还要说讨厌...\n秋青子：（轻笑）那就适度一点嘛，别太过火。哥哥其实很温柔的。\n夏莉：我知道，但是...唉，傲娇真的好累。\n秋青子：（摸摸她的头）放松一点，哥哥会理解的~\n\n</details>\n</theater>}}{{trim}}",
             "system_prompt": false,
             "marker": false,
             "forbid_overrides": false,
@@ -1121,10 +1125,11 @@
             "injection_depth": 4,
             "injection_order": 100,
             "role": "system",
-            "content": "{{addvar::choice_format::在 <content> 标签之后，必须输出剧情选项：\n\n格式：\n\n<choice>\n1. 正常推进剧情 - 继续当前剧情的自然发展\n2. 无厘头剧情推进 - 加入意想不到的搞笑转折\n3. 色色剧情推进 - 向亲密互动方向发展\n4. 拷打模式 - 检查角色是否OOC、剧情是否合理\n</choice>\n\n选项说明：\n- 选项1：按照当前剧情节奏和{{user}}性格自然推进\n- 选项2：打破常规，加入突发奇想、搞笑反转等元素\n- 选项3：向NSFW方向引导，增加暧昧或色情内容\n- 选项4：元层面分析，检查角色一致性、剧情逻辑、是否有OOC等问题，给出改进建议\n\n注意：\n选项应该基于当前剧情状态生成。如果当前已经是NSFW场景，选项3可以改成\"继续深入\"。如果是日常场景，选项可以更具体化。\n}}{{trim}}",
+            "content": "{{addvar::choice_format::在 <content> 标签之后，必须输出剧情选项：\n\n格式：\n\n<choice>\n1. 正常推进剧情 - 继续当前剧情的自然发展\n2. 无厘头剧情推进 - 加入意想不到的搞笑转折\n3. 色色剧情推进 - 向亲密互动方向发展\n4. 拷打模式 - 检查角色是否OOC、剧情是否合理\n</choice>\n\n选项说明：\n- 选项1：按照当前剧情节奏和<user>性格自然推进\n- 选项2：打破常规，加入突发奇想、搞笑反转等元素\n- 选项3：向NSFW方向引导，增加暧昧或色情内容\n- 选项4：元层面分析，检查角色一致性、剧情逻辑、是否有OOC等问题，给出改进建议\n\n注意：\n选项应该基于当前剧情状态生成。如果当前已经是NSFW场景，选项3可以改成\"继续深入\"。如果是日常场景，选项可以更具体化。\n}}{{trim}}",
             "system_prompt": false,
             "marker": false,
-            "forbid_overrides": false
+            "forbid_overrides": false,
+            "injection_trigger": []
         },
         {
             "identifier": "78",
@@ -1378,6 +1383,19 @@
             "content": "If you have more knowledge of {{char}}, add to the character's lore and personality to enhance them but keep the Character Sheet's definitions absolute.",
             "system_prompt": true,
             "marker": false
+        },
+        {
+            "identifier": "SPresetSettings",
+            "system_prompt": false,
+            "enabled": false,
+            "marker": false,
+            "name": "SPreset配置",
+            "role": "system",
+            "content": "{\"ChatSquash\":{\"enabled\":false,\"separate_chat_history\":false,\"parse_clewd\":true,\"role\":\"assistant\",\"stop_string\":\"User:\",\"user_prefix\":\"\\n\\nUser:\",\"user_suffix\":\"\",\"char_prefix\":\"\\n\\nAssistant:\",\"char_suffix\":\"\",\"prefix_system\":\"\",\"suffix_system\":\"\",\"enable_squashed_separator\":false,\"squashed_separator_regex\":false,\"squashed_separator_string\":\"\",\"squashed_post_script_enable\":false,\"squashed_post_script\":\"\"},\"RegexBinding\":{\"regexes\":[{\"id\":\"48780abe-0c4b-445e-a943-47685f8e0ace\",\"scriptName\":\"00-去除思维链内容\",\"findRegex\":\"/^([\\\\s\\\\S]*?)<\\\\/think(ing)?>/gsi\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"9a81b517-9ac5-4634-810a-848f207eb8a7\",\"scriptName\":\"01-思维链完整-月相主题\",\"findRegex\":\"/^([\\\\s\\\\S]*?)<\\\\/think(ing)?>/gsi\",\"replaceString\":\"<div style=\\\"width: 80%; margin: 20px auto;\\\">\\n  <details class=\\\"moon-thinking\\\" style=\\\"\\n    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);\\n    border: 1px solid rgba(251, 191, 36, 0.3);\\n    border-radius: 18px;\\n    box-shadow: \\n      0 4px 24px rgba(251, 191, 36, 0.2),\\n      0 0 40px rgba(251, 191, 36, 0.1),\\n      inset 0 1px 0 rgba(251, 191, 36, 0.1);\\n    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);\\n    overflow: hidden;\\n    position: relative;\\n  \\\">\\n    <summary style=\\\"\\n      padding: 16px 24px;\\n      color: #fef3c7;\\n      cursor: pointer;\\n      list-style: none;\\n      font-weight: 500;\\n      position: relative;\\n      display: flex;\\n      align-items: center;\\n      gap: 10px;\\n      z-index: 2;\\n    \\\">\\n      <span style=\\\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.9));\\\">⭐</span>\\n      <span style=\\\"flex: 1;\\\">思绪如星，散落夜空...</span>\\n      <small style=\\\"color: #fde68a; font-size: 0.85em; margin-left: 8px;\\\">\\n        <span class=\\\"toggle-hint\\\" data-close=\\\"展开思绪 ▶\\\" data-open=\\\"收起 ▼\\\"></span>\\n      </small>\\n      <span class=\\\"stars-bg\\\" style=\\\"\\n        position: absolute;\\n        top: 0;\\n        left: 0;\\n        width: 100%;\\n        height: 100%;\\n        background-image: \\n          radial-gradient(circle at 15% 30%, rgba(251, 191, 36, 0.15) 1px, transparent 1px),\\n          radial-gradient(circle at 75% 60%, rgba(251, 191, 36, 0.12) 1px, transparent 1px),\\n          radial-gradient(circle at 45% 70%, rgba(251, 191, 36, 0.1) 1px, transparent 1px),\\n          radial-gradient(circle at 85% 25%, rgba(251, 191, 36, 0.13) 1px, transparent 1px);\\n        background-size: 100% 100%;\\n        animation: stars-twinkle 2s ease-in-out infinite;\\n        pointer-events: none;\\n      \\\"></span>\\n    </summary>\\n    <div style=\\\"\\n      max-height: 320px;\\n      overflow-y: auto;\\n      padding: 14px 24px;\\n      color: #cbd5e1;\\n      line-height: 1.7;\\n      transition: all 0.3s ease;\\n      white-space: pre-wrap;\\n      background: rgba(15, 23, 42, 0.4);\\n    \\\">\\n    $1\\n    </div>\\n  </details>\\n</div>\\n\\n<style>\\n  .moon-thinking::-webkit-scrollbar {\\n    width: 6px;\\n  }\\n  .moon-thinking::-webkit-scrollbar-track {\\n    background: #0f172a;\\n  }\\n  .moon-thinking::-webkit-scrollbar-thumb {\\n    background: rgba(251, 191, 36, 0.3);\\n    border-radius: 3px;\\n  }\\n  .moon-thinking::-webkit-scrollbar-thumb:hover {\\n    background: rgba(251, 191, 36, 0.5);\\n  }\\n\\n  .moon-thinking[open] {\\n    box-shadow: \\n      0 8px 40px rgba(251, 191, 36, 0.3),\\n      0 0 60px rgba(251, 191, 36, 0.15),\\n      inset 0 1px 0 rgba(251, 191, 36, 0.2) !important;\\n    border-color: rgba(251, 191, 36, 0.5) !important;\\n  }\\n  .moon-thinking[open] > div {\\n    animation: contentSlideIn 0.4s ease forwards;\\n  }\\n\\n  .moon-thinking summary:hover {\\n    background: rgba(251, 191, 36, 0.05);\\n  }\\n  .moon-thinking[open] summary {\\n    border-bottom: 1px solid rgba(251, 191, 36, 0.25);\\n    background: rgba(30, 58, 95, 0.3);\\n  }\\n  .moon-thinking summary::marker {\\n    display: none;\\n  }\\n\\n  .moon-thinking[open] .toggle-hint::after {\\n    content: attr(data-open);\\n  }\\n  .moon-thinking:not([open]) .toggle-hint::after {\\n    content: attr(data-close);\\n  }\\n\\n  @keyframes stars-twinkle {\\n    0%, 100% {\\n      opacity: 0.6;\\n    }\\n    50% {\\n      opacity: 1;\\n    }\\n  }\\n\\n  @keyframes contentSlideIn {\\n    from {\\n      opacity: 0;\\n      transform: translateY(-10px);\\n    }\\n    to {\\n      opacity: 1;\\n      transform: translateY(0);\\n    }\\n  }\\n</style>\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":true,\"promptOnly\":false,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"2dcc49df-7f0a-48b8-8cfb-cd31158eb730\",\"scriptName\":\"02-剧情选项-星辰主题\",\"findRegex\":\"/<choice>\\\\s*\\\\n?\\\\s*(.+?)\\\\s*-\\\\s*(.+?)\\\\s*\\\\n\\\\s*(.+?)\\\\s*-\\\\s*(.+?)\\\\s*\\\\n\\\\s*(.+?)\\\\s*-\\\\s*(.+?)\\\\s*\\\\n\\\\s*(.+?)\\\\s*-\\\\s*(.+?)\\\\s*\\\\n?\\\\s*<\\\\/choice>/gsi\",\"replaceString\":\"<div style=\\\"width: 80%; margin: 20px auto;\\\">\\n  <div class=\\\"star-choices\\\" style=\\\"\\n    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);\\n    border: 1px solid rgba(147, 197, 253, 0.3);\\n    border-radius: 18px;\\n    box-shadow: \\n      0 4px 24px rgba(147, 197, 253, 0.2),\\n      0 0 40px rgba(147, 197, 253, 0.1),\\n      inset 0 1px 0 rgba(147, 197, 253, 0.1);\\n    padding: 20px;\\n    position: relative;\\n    overflow: hidden;\\n  \\\">\\n    <div style=\\\"\\n      color: #e0f2fe;\\n      font-weight: 500;\\n      margin-bottom: 16px;\\n      display: flex;\\n      align-items: center;\\n      gap: 10px;\\n      position: relative;\\n      z-index: 2;\\n    \\\">\\n      <span style=\\\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(147, 197, 253, 0.9));\\\">🎲</span>\\n      <span>接下来要做什么？</span>\\n    </div>\\n    <div style=\\\"\\n      display: flex;\\n      flex-direction: column;\\n      gap: 10px;\\n      position: relative;\\n      z-index: 2;\\n    \\\">\\n      <div class=\\\"choice-item\\\" style=\\\"\\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\\n        border: 1px solid rgba(147, 197, 253, 0.3);\\n        border-radius: 12px;\\n        padding: 12px 16px;\\n        color: #bae6fd;\\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\\n      \\\">\\n        <span style=\\\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\\\">1.</span>\\n        <strong>$1</strong>\\n        <span style=\\\"color: #94a3b8; font-size: 0.9em;\\\"> - $2</span>\\n      </div>\\n      <div class=\\\"choice-item\\\" style=\\\"\\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\\n        border: 1px solid rgba(147, 197, 253, 0.3);\\n        border-radius: 12px;\\n        padding: 12px 16px;\\n        color: #bae6fd;\\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\\n      \\\">\\n        <span style=\\\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\\\">2.</span>\\n        <strong>$3</strong>\\n        <span style=\\\"color: #94a3b8; font-size: 0.9em;\\\"> - $4</span>\\n      </div>\\n      <div class=\\\"choice-item\\\" style=\\\"\\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\\n        border: 1px solid rgba(147, 197, 253, 0.3);\\n        border-radius: 12px;\\n        padding: 12px 16px;\\n        color: #bae6fd;\\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\\n      \\\">\\n        <span style=\\\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\\\">3.</span>\\n        <strong>$5</strong>\\n        <span style=\\\"color: #94a3b8; font-size: 0.9em;\\\"> - $6</span>\\n      </div>\\n      <div class=\\\"choice-item\\\" style=\\\"\\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\\n        border: 1px solid rgba(147, 197, 253, 0.3);\\n        border-radius: 12px;\\n        padding: 12px 16px;\\n        color: #bae6fd;\\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\\n      \\\">\\n        <span style=\\\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\\\">4.</span>\\n        <strong>$7</strong>\\n        <span style=\\\"color: #94a3b8; font-size: 0.9em;\\\"> - $8</span>\\n      </div>\\n    </div>\\n    <span style=\\\"\\n      position: absolute;\\n      top: 0;\\n      left: 0;\\n      width: 100%;\\n      height: 100%;\\n      background-image: \\n        radial-gradient(circle at 20% 25%, rgba(147, 197, 253, 0.15) 1px, transparent 1px),\\n        radial-gradient(circle at 70% 55%, rgba(147, 197, 253, 0.12) 1px, transparent 1px),\\n        radial-gradient(circle at 40% 75%, rgba(147, 197, 253, 0.1) 1px, transparent 1px),\\n        radial-gradient(circle at 80% 30%, rgba(147, 197, 253, 0.13) 1px, transparent 1px);\\n      background-size: 100% 100%;\\n      animation: stars-twinkle 2s ease-in-out infinite;\\n      pointer-events: none;\\n      z-index: 1;\\n    \\\"></span>\\n  </div>\\n</div>\\n\\n<style>\\n  .choice-item:hover {\\n    background: linear-gradient(135deg, rgba(30, 58, 95, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%) !important;\\n    border-color: rgba(147, 197, 253, 0.5) !important;\\n    box-shadow: \\n      0 4px 20px rgba(147, 197, 253, 0.3),\\n      0 0 30px rgba(147, 197, 253, 0.2) !important;\\n    transform: translateX(4px);\\n  }\\n\\n  .choice-item:active {\\n    transform: translateX(2px) scale(0.98) !important;\\n  }\\n\\n  @keyframes stars-twinkle {\\n    0%, 100% {\\n      opacity: 0.6;\\n    }\\n    50% {\\n      opacity: 1;\\n    }\\n  }\\n</style>\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":true,\"promptOnly\":false,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"9e59f33f-3044-4346-82b3-b17ba176df79\",\"scriptName\":\"03a-小总结隐藏(前10轮-AI不可见)\",\"findRegex\":\"/<details>\\\\s*<summary>\\\\s*小总结\\\\s*<\\\\/summary>[\\\\s\\\\S]*?<\\\\/details>/gsi\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":10},{\"id\":\"3982e37c-ecaa-4e60-b013-5cd127f0950c\",\"scriptName\":\"03b-小总结纯文本(11轮后-AI可见)\",\"findRegex\":\"/([\\\\s\\\\S]*?<details>\\\\s*<summary>\\\\s*小总结\\\\s*<\\\\/summary>|<\\\\/details>[\\\\s\\\\S]*?$)/gs\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":11,\"maxDepth\":null},{\"id\":\"dd1ea097-ff1c-41e6-82f1-a68e3dde1ab1\",\"scriptName\":\"03c-小总结美化(全程-用户可见)\",\"findRegex\":\"/<details>\\\\s*<summary>\\\\s*小总结\\\\s*<\\\\/summary>\\\\s*(.*)\\\\s*<\\\\/details>/gsi\",\"replaceString\":\"<div style=\\\"width: 80%; margin: 20px auto;\\\">\\n  <details class=\\\"moon-summary\\\" style=\\\"\\n    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);\\n    border: 1px solid rgba(251, 191, 36, 0.3);\\n    border-radius: 18px;\\n    box-shadow: \\n      0 4px 24px rgba(251, 191, 36, 0.2),\\n      0 0 40px rgba(251, 191, 36, 0.1),\\n      inset 0 1px 0 rgba(251, 191, 36, 0.1);\\n    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);\\n    overflow: hidden;\\n    position: relative;\\n  \\\">\\n    <summary style=\\\"\\n      padding: 16px 24px;\\n      color: #fef3c7;\\n      cursor: pointer;\\n      list-style: none;\\n      font-weight: 500;\\n      position: relative;\\n      display: flex;\\n      align-items: center;\\n      gap: 10px;\\n      z-index: 2;\\n    \\\">\\n      <span style=\\\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.9));\\\">📜</span>\\n      <span style=\\\"flex: 1;\\\">星图已绘 - 航路已明</span>\\n      <small style=\\\"color: #fde68a; font-size: 0.85em; margin-left: 8px;\\\">\\n        <span class=\\\"toggle-summary\\\" data-close=\\\"展开星图 ▶\\\" data-open=\\\"收起 ▼\\\"></span>\\n      </small>\\n      <span class=\\\"stars-bg\\\" style=\\\"\\n        position: absolute;\\n        top: 0;\\n        left: 0;\\n        width: 100%;\\n        height: 100%;\\n        background-image: \\n          radial-gradient(circle at 15% 30%, rgba(251, 191, 36, 0.15) 1px, transparent 1px),\\n          radial-gradient(circle at 75% 60%, rgba(251, 191, 36, 0.12) 1px, transparent 1px),\\n          radial-gradient(circle at 45% 70%, rgba(251, 191, 36, 0.1) 1px, transparent 1px),\\n          radial-gradient(circle at 85% 25%, rgba(251, 191, 36, 0.13) 1px, transparent 1px);\\n        background-size: 100% 100%;\\n        animation: stars-twinkle 2s ease-in-out infinite;\\n        pointer-events: none;\\n      \\\"></span>\\n    </summary>\\n    <div style=\\\"\\n      max-height: 320px;\\n      overflow-y: auto;\\n      padding: 14px 24px;\\n      color: #cbd5e1;\\n      line-height: 1.7;\\n      transition: all 0.3s ease;\\n      white-space: pre-wrap;\\n      background: rgba(15, 23, 42, 0.4);\\n    \\\">\\n    $1\\n    </div>\\n  </details>\\n</div>\\n\\n<style>\\n  .moon-summary::-webkit-scrollbar {\\n    width: 6px;\\n  }\\n  .moon-summary::-webkit-scrollbar-track {\\n    background: #0f172a;\\n  }\\n  .moon-summary::-webkit-scrollbar-thumb {\\n    background: rgba(251, 191, 36, 0.3);\\n    border-radius: 3px;\\n  }\\n  .moon-summary::-webkit-scrollbar-thumb:hover {\\n    background: rgba(251, 191, 36, 0.5);\\n  }\\n\\n  .moon-summary[open] {\\n    box-shadow: \\n      0 8px 40px rgba(251, 191, 36, 0.3),\\n      0 0 60px rgba(251, 191, 36, 0.15),\\n      inset 0 1px 0 rgba(251, 191, 36, 0.2) !important;\\n    border-color: rgba(251, 191, 36, 0.5) !important;\\n  }\\n  .moon-summary[open] > div {\\n    animation: contentSlideIn 0.4s ease forwards;\\n  }\\n\\n  .moon-summary summary:hover {\\n    background: rgba(251, 191, 36, 0.05);\\n  }\\n  .moon-summary[open] summary {\\n    border-bottom: 1px solid rgba(251, 191, 36, 0.25);\\n    background: rgba(30, 58, 95, 0.3);\\n  }\\n  .moon-summary summary::marker {\\n    display: none;\\n  }\\n\\n  .moon-summary[open] .toggle-summary::after {\\n    content: attr(data-open);\\n  }\\n  .moon-summary:not([open]) .toggle-summary::after {\\n    content: attr(data-close);\\n  }\\n\\n  @keyframes stars-twinkle {\\n    0%, 100% {\\n      opacity: 0.6;\\n    }\\n    50% {\\n      opacity: 1;\\n    }\\n  }\\n\\n  @keyframes contentSlideIn {\\n    from {\\n      opacity: 0;\\n      transform: translateY(-10px);\\n    }\\n    to {\\n      opacity: 1;\\n      transform: translateY(0);\\n    }\\n  }\\n</style>\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":true,\"promptOnly\":false,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"1a8762d7-7a6b-40e8-9831-b89edd40b63c\",\"scriptName\":\"04a-吐槽剧场美化-月相主题\",\"findRegex\":\"/<details>\\\\s*<summary>\\\\s*🎭 秋青子&角色吐槽小剧场\\\\s*<\\\\/summary>\\\\s*(.*)\\\\s*<\\\\/details>/gsi\",\"replaceString\":\"<div style=\\\"width: 80%; margin: 20px auto;\\\">\\n  <details class=\\\"star-curtain-whisper\\\" style=\\\"\\n    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 30%, #1e1b4b 100%);\\n    border: 1px solid rgba(192, 132, 252, 0.3);\\n    border-radius: 16px;\\n    box-shadow: \\n      0 4px 20px rgba(168, 85, 247, 0.15),\\n      inset 0 1px 0 rgba(192, 132, 252, 0.1);\\n    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\\n    overflow: hidden;\\n    position: relative;\\n  \\\">\\n    <summary style=\\\"\\n      padding: 16px 24px;\\n      color: #f3e8ff;\\n      cursor: pointer;\\n      list-style: none;\\n      font-weight: 500;\\n      position: relative;\\n      display: flex;\\n      align-items: center;\\n      gap: 8px;\\n      z-index: 2;\\n    \\\">\\n      <span style=\\\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(192, 132, 252, 0.9));\\\">🎭</span>\\n      <span style=\\\"flex: 1;\\\">幕后心声</span>\\n      <small style=\\\"color: #e9d5ff; font-size: 0.85em; margin-left: 8px;\\\">\\n        <span class=\\\"curtain-toggle\\\" data-close=\\\"展开独白 ▶\\\" data-open=\\\"收起 ▼\\\"></span>\\n      </small>\\n      <span class=\\\"curtain-shimmer\\\" style=\\\"\\n        position: absolute;\\n        top: 0;\\n        left: 0;\\n        width: 100%;\\n        height: 100%;\\n        background: repeating-linear-gradient(\\n          90deg,\\n          transparent,\\n          transparent 10px,\\n          rgba(192, 132, 252, 0.03) 10px,\\n          rgba(192, 132, 252, 0.03) 20px\\n        );\\n        animation: curtain-wave 2s linear infinite;\\n        pointer-events: none;\\n      \\\"></span>\\n      <span class=\\\"spotlight\\\" style=\\\"\\n        position: absolute;\\n        top: -50%;\\n        left: 50%;\\n        transform: translateX(-50%);\\n        width: 150%;\\n        height: 200%;\\n        background: radial-gradient(ellipse at center, rgba(192, 132, 252, 0.08) 0%, transparent 50%);\\n        animation: spotlight-flicker 4s ease-in-out infinite;\\n        pointer-events: none;\\n      \\\"></span>\\n    </summary>\\n    <div style=\\\"\\n      max-height: 300px;\\n      overflow-y: auto;\\n      padding: 12px 20px;\\n      color: #cbd5e1;\\n      line-height: 1.6;\\n      transition: all 0.3s ease;\\n      white-space: pre-wrap;\\n      background: rgba(30, 27, 75, 0.4);\\n      border-top: 1px solid rgba(192, 132, 252, 0.15);\\n    \\\">\\n    $1\\n    </div>\\n  </details>\\n</div>\\n\\n<style>\\n  .star-curtain-whisper::-webkit-scrollbar {\\n    width: 6px;\\n  }\\n  .star-curtain-whisper::-webkit-scrollbar-track {\\n    background: #1e1b4b;\\n  }\\n  .star-curtain-whisper::-webkit-scrollbar-thumb {\\n    background: rgba(192, 132, 252, 0.3);\\n    border-radius: 3px;\\n  }\\n  .star-curtain-whisper::-webkit-scrollbar-thumb:hover {\\n    background: rgba(192, 132, 252, 0.5);\\n  }\\n\\n  .star-curtain-whisper[open] {\\n    box-shadow: \\n      0 8px 32px rgba(168, 85, 247, 0.25),\\n      inset 0 1px 0 rgba(192, 132, 252, 0.2) !important;\\n    border-color: rgba(192, 132, 252, 0.5) !important;\\n  }\\n  .star-curtain-whisper[open] > div {\\n    animation: curtainRise 0.4s ease forwards;\\n  }\\n\\n  .star-curtain-whisper summary:hover {\\n    background: rgba(168, 85, 247, 0.06);\\n  }\\n  .star-curtain-whisper[open] summary {\\n    background: rgba(76, 29, 149, 0.3);\\n  }\\n  .star-curtain-whisper summary::marker {\\n    display: none;\\n  }\\n\\n  .star-curtain-whisper[open] .curtain-toggle::after {\\n    content: attr(data-open);\\n  }\\n  .star-curtain-whisper:not([open]) .curtain-toggle::after {\\n    content: attr(data-close);\\n  }\\n\\n  @keyframes mask-sway {\\n    0%, 100% {\\n      transform: rotate(-3deg);\\n    }\\n    50% {\\n      transform: rotate(3deg);\\n    }\\n  }\\n\\n  @keyframes curtain-wave {\\n    0% {\\n      transform: translateX(0);\\n    }\\n    100% {\\n      transform: translateX(20px);\\n    }\\n  }\\n\\n  @keyframes spotlight-flicker {\\n    0%, 100% {\\n      opacity: 0.5;\\n    }\\n    50% {\\n      opacity: 0.8;\\n    }\\n  }\\n\\n  @keyframes curtainRise {\\n    from {\\n      opacity: 0;\\n      transform: translateY(-10px);\\n    }\\n    to {\\n      opacity: 1;\\n      transform: translateY(0);\\n    }\\n  }\\n</style>\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":true,\"promptOnly\":false,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"61b777c5-6254-443d-89cc-b553bc6f723d\",\"scriptName\":\"04b-吐槽剧场隐藏\",\"findRegex\":\"/<details>\\\\s*<summary>\\\\s*🎭 秋青子&角色吐槽小剧场\\\\s*<\\\\/summary>\\\\s*(.*)\\\\s*<\\\\/details>/gsi\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"54d86d23-13c1-4684-9ca5-77e43ad0e377\",\"scriptName\":\"05-隐藏辅助标签\",\"findRegex\":\"/(<content>|<\\\\/content>)|(<safe>[\\\\s\\\\S]*?<\\\\/safe>)|(<recap>|<\\\\/recap>|<theater>|<\\\\/theater>)/gs\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":false,\"markdownOnly\":true,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"4b093653-3d45-4856-95b0-d8db36fd560f\",\"scriptName\":\"06-隐藏选项回复(2楼起)\",\"findRegex\":\"/<choice>[\\\\s\\\\S]*?<\\\\/choice>/gi\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[1,2],\"disabled\":true,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":2,\"maxDepth\":null},{\"id\":\"021a48e4-2fc8-4c74-b4d4-3792442bf300\",\"scriptName\":\"01-无美化版本（二选一开）\",\"findRegex\":\"/(<content>|<\\\\/content>)|(.*?<\\\\/think(ing)?>(\\\\n)?)|(<think(ing)?>[\\\\s\\\\S]*?<\\\\/think(ing)?>(\\\\n)?)|(<safe>[\\\\s\\\\S]*?<\\\\/safe>)|(<recap>|<\\\\/recap>|<theater>|<\\\\/theater>)/gs\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":true,\"markdownOnly\":true,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"8aca4a8b-7ebd-4b5e-bdfc-808d6dcc4441\",\"scriptName\":\"02-小总结隐藏(前10轮)\",\"findRegex\":\"/<details>\\\\s*<summary>\\\\s*小总结\\\\s*<\\\\/summary>[\\\\s\\\\S]*?<\\\\/details>/gsi\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":true,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":10},{\"id\":\"18e7bb50-c165-4d73-93a6-1530804a60a4\",\"scriptName\":\"03-小总结去标签(11轮后)\",\"findRegex\":\"/([\\\\s\\\\S]*?<details>\\\\s*<summary>\\\\s*小总结\\\\s*<\\\\/summary>|<\\\\/details>[\\\\s\\\\S]*?$)/gs\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":true,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":11,\"maxDepth\":null},{\"id\":\"23979172-eb23-4f6f-bb12-78449083c106\",\"scriptName\":\"04-去吐槽剧场\",\"findRegex\":\"/<details>\\\\s*<summary>\\\\s*🎭 秋青子&角色吐槽小剧场\\\\s*<\\\\/summary>[\\\\s\\\\S]*?<\\\\/details>/gsi\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[2],\"disabled\":true,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":null,\"maxDepth\":null},{\"id\":\"23d3412e-da8a-4324-9ce7-20166c79a919\",\"scriptName\":\"06-隐藏选项回复(2楼起)\",\"findRegex\":\"/<choice>[\\\\s\\\\S]*?<\\\\/choice>/gi\",\"replaceString\":\"\",\"trimStrings\":[],\"placement\":[1,2],\"disabled\":true,\"markdownOnly\":false,\"promptOnly\":true,\"runOnEdit\":true,\"substituteRegex\":0,\"minDepth\":2,\"maxDepth\":null}]},\"MacroNest\":false}",
+            "injection_position": 0,
+            "injection_depth": 4,
+            "injection_order": 100,
+            "forbid_overrides": false
         }
     ],
     "prompt_order": [
@@ -1538,7 +1556,7 @@
                 },
                 {
                     "identifier": "31",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "32",
@@ -1554,11 +1572,11 @@
                 },
                 {
                     "identifier": "35",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "36",
-                    "enabled": false
+                    "enabled": true
                 },
                 {
                     "identifier": "37",
@@ -1658,11 +1676,11 @@
                 },
                 {
                     "identifier": "61",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "62",
-                    "enabled": true
+                    "enabled": false
                 },
                 {
                     "identifier": "63",
@@ -1812,5 +1830,288 @@
     "request_images": false,
     "seed": -1,
     "n": 1,
-    "extensions": {}
+    "extensions": {
+        "SPreset": {
+            "ChatSquash": {
+                "enabled": false,
+                "separate_chat_history": false,
+                "parse_clewd": true,
+                "role": "assistant",
+                "stop_string": "User:",
+                "user_prefix": "\n\nUser:",
+                "user_suffix": "",
+                "char_prefix": "\n\nAssistant:",
+                "char_suffix": "",
+                "prefix_system": "",
+                "suffix_system": "",
+                "enable_squashed_separator": false,
+                "squashed_separator_regex": false,
+                "squashed_separator_string": "",
+                "squashed_post_script_enable": false,
+                "squashed_post_script": ""
+            },
+            "RegexBinding": {
+                "regexes": [
+                    {
+                        "id": "48780abe-0c4b-445e-a943-47685f8e0ace",
+                        "scriptName": "00-去除思维链内容",
+                        "findRegex": "/^([\\s\\S]*?)<\\/think(ing)?>/gsi",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "9a81b517-9ac5-4634-810a-848f207eb8a7",
+                        "scriptName": "01-思维链完整-月相主题",
+                        "findRegex": "/^([\\s\\S]*?)<\\/think(ing)?>/gsi",
+                        "replaceString": "<div style=\"width: 80%; margin: 20px auto;\">\n  <details class=\"moon-thinking\" style=\"\n    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);\n    border: 1px solid rgba(251, 191, 36, 0.3);\n    border-radius: 18px;\n    box-shadow: \n      0 4px 24px rgba(251, 191, 36, 0.2),\n      0 0 40px rgba(251, 191, 36, 0.1),\n      inset 0 1px 0 rgba(251, 191, 36, 0.1);\n    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);\n    overflow: hidden;\n    position: relative;\n  \">\n    <summary style=\"\n      padding: 16px 24px;\n      color: #fef3c7;\n      cursor: pointer;\n      list-style: none;\n      font-weight: 500;\n      position: relative;\n      display: flex;\n      align-items: center;\n      gap: 10px;\n      z-index: 2;\n    \">\n      <span style=\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.9));\">⭐</span>\n      <span style=\"flex: 1;\">思绪如星，散落夜空...</span>\n      <small style=\"color: #fde68a; font-size: 0.85em; margin-left: 8px;\">\n        <span class=\"toggle-hint\" data-close=\"展开思绪 ▶\" data-open=\"收起 ▼\"></span>\n      </small>\n      <span class=\"stars-bg\" style=\"\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        background-image: \n          radial-gradient(circle at 15% 30%, rgba(251, 191, 36, 0.15) 1px, transparent 1px),\n          radial-gradient(circle at 75% 60%, rgba(251, 191, 36, 0.12) 1px, transparent 1px),\n          radial-gradient(circle at 45% 70%, rgba(251, 191, 36, 0.1) 1px, transparent 1px),\n          radial-gradient(circle at 85% 25%, rgba(251, 191, 36, 0.13) 1px, transparent 1px);\n        background-size: 100% 100%;\n        animation: stars-twinkle 2s ease-in-out infinite;\n        pointer-events: none;\n      \"></span>\n    </summary>\n    <div style=\"\n      max-height: 320px;\n      overflow-y: auto;\n      padding: 14px 24px;\n      color: #cbd5e1;\n      line-height: 1.7;\n      transition: all 0.3s ease;\n      white-space: pre-wrap;\n      background: rgba(15, 23, 42, 0.4);\n    \">\n    $1\n    </div>\n  </details>\n</div>\n\n<style>\n  .moon-thinking::-webkit-scrollbar {\n    width: 6px;\n  }\n  .moon-thinking::-webkit-scrollbar-track {\n    background: #0f172a;\n  }\n  .moon-thinking::-webkit-scrollbar-thumb {\n    background: rgba(251, 191, 36, 0.3);\n    border-radius: 3px;\n  }\n  .moon-thinking::-webkit-scrollbar-thumb:hover {\n    background: rgba(251, 191, 36, 0.5);\n  }\n\n  .moon-thinking[open] {\n    box-shadow: \n      0 8px 40px rgba(251, 191, 36, 0.3),\n      0 0 60px rgba(251, 191, 36, 0.15),\n      inset 0 1px 0 rgba(251, 191, 36, 0.2) !important;\n    border-color: rgba(251, 191, 36, 0.5) !important;\n  }\n  .moon-thinking[open] > div {\n    animation: contentSlideIn 0.4s ease forwards;\n  }\n\n  .moon-thinking summary:hover {\n    background: rgba(251, 191, 36, 0.05);\n  }\n  .moon-thinking[open] summary {\n    border-bottom: 1px solid rgba(251, 191, 36, 0.25);\n    background: rgba(30, 58, 95, 0.3);\n  }\n  .moon-thinking summary::marker {\n    display: none;\n  }\n\n  .moon-thinking[open] .toggle-hint::after {\n    content: attr(data-open);\n  }\n  .moon-thinking:not([open]) .toggle-hint::after {\n    content: attr(data-close);\n  }\n\n  @keyframes stars-twinkle {\n    0%, 100% {\n      opacity: 0.6;\n    }\n    50% {\n      opacity: 1;\n    }\n  }\n\n  @keyframes contentSlideIn {\n    from {\n      opacity: 0;\n      transform: translateY(-10px);\n    }\n    to {\n      opacity: 1;\n      transform: translateY(0);\n    }\n  }\n</style>",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": true,
+                        "promptOnly": false,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "2dcc49df-7f0a-48b8-8cfb-cd31158eb730",
+                        "scriptName": "02-剧情选项-星辰主题",
+                        "findRegex": "/<choice>\\s*\\n?\\s*(.+?)\\s*-\\s*(.+?)\\s*\\n\\s*(.+?)\\s*-\\s*(.+?)\\s*\\n\\s*(.+?)\\s*-\\s*(.+?)\\s*\\n\\s*(.+?)\\s*-\\s*(.+?)\\s*\\n?\\s*<\\/choice>/gsi",
+                        "replaceString": "<div style=\"width: 80%; margin: 20px auto;\">\n  <div class=\"star-choices\" style=\"\n    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);\n    border: 1px solid rgba(147, 197, 253, 0.3);\n    border-radius: 18px;\n    box-shadow: \n      0 4px 24px rgba(147, 197, 253, 0.2),\n      0 0 40px rgba(147, 197, 253, 0.1),\n      inset 0 1px 0 rgba(147, 197, 253, 0.1);\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n  \">\n    <div style=\"\n      color: #e0f2fe;\n      font-weight: 500;\n      margin-bottom: 16px;\n      display: flex;\n      align-items: center;\n      gap: 10px;\n      position: relative;\n      z-index: 2;\n    \">\n      <span style=\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(147, 197, 253, 0.9));\">🎲</span>\n      <span>接下来要做什么？</span>\n    </div>\n    <div style=\"\n      display: flex;\n      flex-direction: column;\n      gap: 10px;\n      position: relative;\n      z-index: 2;\n    \">\n      <div class=\"choice-item\" style=\"\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\n        border: 1px solid rgba(147, 197, 253, 0.3);\n        border-radius: 12px;\n        padding: 12px 16px;\n        color: #bae6fd;\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n      \">\n        <span style=\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\">1.</span>\n        <strong>$1</strong>\n        <span style=\"color: #94a3b8; font-size: 0.9em;\"> - $2</span>\n      </div>\n      <div class=\"choice-item\" style=\"\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\n        border: 1px solid rgba(147, 197, 253, 0.3);\n        border-radius: 12px;\n        padding: 12px 16px;\n        color: #bae6fd;\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n      \">\n        <span style=\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\">2.</span>\n        <strong>$3</strong>\n        <span style=\"color: #94a3b8; font-size: 0.9em;\"> - $4</span>\n      </div>\n      <div class=\"choice-item\" style=\"\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\n        border: 1px solid rgba(147, 197, 253, 0.3);\n        border-radius: 12px;\n        padding: 12px 16px;\n        color: #bae6fd;\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n      \">\n        <span style=\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\">3.</span>\n        <strong>$5</strong>\n        <span style=\"color: #94a3b8; font-size: 0.9em;\"> - $6</span>\n      </div>\n      <div class=\"choice-item\" style=\"\n        background: linear-gradient(135deg, rgba(30, 58, 95, 0.5) 0%, rgba(15, 23, 42, 0.6) 100%);\n        border: 1px solid rgba(147, 197, 253, 0.3);\n        border-radius: 12px;\n        padding: 12px 16px;\n        color: #bae6fd;\n        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n      \">\n        <span style=\"color: #7dd3fc; font-weight: 600; margin-right: 8px;\">4.</span>\n        <strong>$7</strong>\n        <span style=\"color: #94a3b8; font-size: 0.9em;\"> - $8</span>\n      </div>\n    </div>\n    <span style=\"\n      position: absolute;\n      top: 0;\n      left: 0;\n      width: 100%;\n      height: 100%;\n      background-image: \n        radial-gradient(circle at 20% 25%, rgba(147, 197, 253, 0.15) 1px, transparent 1px),\n        radial-gradient(circle at 70% 55%, rgba(147, 197, 253, 0.12) 1px, transparent 1px),\n        radial-gradient(circle at 40% 75%, rgba(147, 197, 253, 0.1) 1px, transparent 1px),\n        radial-gradient(circle at 80% 30%, rgba(147, 197, 253, 0.13) 1px, transparent 1px);\n      background-size: 100% 100%;\n      animation: stars-twinkle 2s ease-in-out infinite;\n      pointer-events: none;\n      z-index: 1;\n    \"></span>\n  </div>\n</div>\n\n<style>\n  .choice-item:hover {\n    background: linear-gradient(135deg, rgba(30, 58, 95, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%) !important;\n    border-color: rgba(147, 197, 253, 0.5) !important;\n    box-shadow: \n      0 4px 20px rgba(147, 197, 253, 0.3),\n      0 0 30px rgba(147, 197, 253, 0.2) !important;\n    transform: translateX(4px);\n  }\n\n  .choice-item:active {\n    transform: translateX(2px) scale(0.98) !important;\n  }\n\n  @keyframes stars-twinkle {\n    0%, 100% {\n      opacity: 0.6;\n    }\n    50% {\n      opacity: 1;\n    }\n  }\n</style>",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": true,
+                        "promptOnly": false,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "9e59f33f-3044-4346-82b3-b17ba176df79",
+                        "scriptName": "03a-小总结隐藏(前10轮-AI不可见)",
+                        "findRegex": "/<details>\\s*<summary>\\s*小总结\\s*<\\/summary>[\\s\\S]*?<\\/details>/gsi",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": 10
+                    },
+                    {
+                        "id": "3982e37c-ecaa-4e60-b013-5cd127f0950c",
+                        "scriptName": "03b-小总结纯文本(11轮后-AI可见)",
+                        "findRegex": "/([\\s\\S]*?<details>\\s*<summary>\\s*小总结\\s*<\\/summary>|<\\/details>[\\s\\S]*?$)/gs",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": 11,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "dd1ea097-ff1c-41e6-82f1-a68e3dde1ab1",
+                        "scriptName": "03c-小总结美化(全程-用户可见)",
+                        "findRegex": "/<details>\\s*<summary>\\s*小总结\\s*<\\/summary>\\s*(.*)\\s*<\\/details>/gsi",
+                        "replaceString": "<div style=\"width: 80%; margin: 20px auto;\">\n  <details class=\"moon-summary\" style=\"\n    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);\n    border: 1px solid rgba(251, 191, 36, 0.3);\n    border-radius: 18px;\n    box-shadow: \n      0 4px 24px rgba(251, 191, 36, 0.2),\n      0 0 40px rgba(251, 191, 36, 0.1),\n      inset 0 1px 0 rgba(251, 191, 36, 0.1);\n    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);\n    overflow: hidden;\n    position: relative;\n  \">\n    <summary style=\"\n      padding: 16px 24px;\n      color: #fef3c7;\n      cursor: pointer;\n      list-style: none;\n      font-weight: 500;\n      position: relative;\n      display: flex;\n      align-items: center;\n      gap: 10px;\n      z-index: 2;\n    \">\n      <span style=\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.9));\">📜</span>\n      <span style=\"flex: 1;\">星图已绘 - 航路已明</span>\n      <small style=\"color: #fde68a; font-size: 0.85em; margin-left: 8px;\">\n        <span class=\"toggle-summary\" data-close=\"展开星图 ▶\" data-open=\"收起 ▼\"></span>\n      </small>\n      <span class=\"stars-bg\" style=\"\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        background-image: \n          radial-gradient(circle at 15% 30%, rgba(251, 191, 36, 0.15) 1px, transparent 1px),\n          radial-gradient(circle at 75% 60%, rgba(251, 191, 36, 0.12) 1px, transparent 1px),\n          radial-gradient(circle at 45% 70%, rgba(251, 191, 36, 0.1) 1px, transparent 1px),\n          radial-gradient(circle at 85% 25%, rgba(251, 191, 36, 0.13) 1px, transparent 1px);\n        background-size: 100% 100%;\n        animation: stars-twinkle 2s ease-in-out infinite;\n        pointer-events: none;\n      \"></span>\n    </summary>\n    <div style=\"\n      max-height: 320px;\n      overflow-y: auto;\n      padding: 14px 24px;\n      color: #cbd5e1;\n      line-height: 1.7;\n      transition: all 0.3s ease;\n      white-space: pre-wrap;\n      background: rgba(15, 23, 42, 0.4);\n    \">\n    $1\n    </div>\n  </details>\n</div>\n\n<style>\n  .moon-summary::-webkit-scrollbar {\n    width: 6px;\n  }\n  .moon-summary::-webkit-scrollbar-track {\n    background: #0f172a;\n  }\n  .moon-summary::-webkit-scrollbar-thumb {\n    background: rgba(251, 191, 36, 0.3);\n    border-radius: 3px;\n  }\n  .moon-summary::-webkit-scrollbar-thumb:hover {\n    background: rgba(251, 191, 36, 0.5);\n  }\n\n  .moon-summary[open] {\n    box-shadow: \n      0 8px 40px rgba(251, 191, 36, 0.3),\n      0 0 60px rgba(251, 191, 36, 0.15),\n      inset 0 1px 0 rgba(251, 191, 36, 0.2) !important;\n    border-color: rgba(251, 191, 36, 0.5) !important;\n  }\n  .moon-summary[open] > div {\n    animation: contentSlideIn 0.4s ease forwards;\n  }\n\n  .moon-summary summary:hover {\n    background: rgba(251, 191, 36, 0.05);\n  }\n  .moon-summary[open] summary {\n    border-bottom: 1px solid rgba(251, 191, 36, 0.25);\n    background: rgba(30, 58, 95, 0.3);\n  }\n  .moon-summary summary::marker {\n    display: none;\n  }\n\n  .moon-summary[open] .toggle-summary::after {\n    content: attr(data-open);\n  }\n  .moon-summary:not([open]) .toggle-summary::after {\n    content: attr(data-close);\n  }\n\n  @keyframes stars-twinkle {\n    0%, 100% {\n      opacity: 0.6;\n    }\n    50% {\n      opacity: 1;\n    }\n  }\n\n  @keyframes contentSlideIn {\n    from {\n      opacity: 0;\n      transform: translateY(-10px);\n    }\n    to {\n      opacity: 1;\n      transform: translateY(0);\n    }\n  }\n</style>",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": true,
+                        "promptOnly": false,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "1a8762d7-7a6b-40e8-9831-b89edd40b63c",
+                        "scriptName": "04a-吐槽剧场美化-月相主题",
+                        "findRegex": "/<details>\\s*<summary>\\s*🎭 秋青子&角色吐槽小剧场\\s*<\\/summary>\\s*(.*)\\s*<\\/details>/gsi",
+                        "replaceString": "<div style=\"width: 80%; margin: 20px auto;\">\n  <details class=\"star-curtain-whisper\" style=\"\n    background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 30%, #1e1b4b 100%);\n    border: 1px solid rgba(192, 132, 252, 0.3);\n    border-radius: 16px;\n    box-shadow: \n      0 4px 20px rgba(168, 85, 247, 0.15),\n      inset 0 1px 0 rgba(192, 132, 252, 0.1);\n    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);\n    overflow: hidden;\n    position: relative;\n  \">\n    <summary style=\"\n      padding: 16px 24px;\n      color: #f3e8ff;\n      cursor: pointer;\n      list-style: none;\n      font-weight: 500;\n      position: relative;\n      display: flex;\n      align-items: center;\n      gap: 8px;\n      z-index: 2;\n    \">\n      <span style=\"font-size: 1.3em; filter: drop-shadow(0 0 14px rgba(192, 132, 252, 0.9));\">🎭</span>\n      <span style=\"flex: 1;\">幕后心声</span>\n      <small style=\"color: #e9d5ff; font-size: 0.85em; margin-left: 8px;\">\n        <span class=\"curtain-toggle\" data-close=\"展开独白 ▶\" data-open=\"收起 ▼\"></span>\n      </small>\n      <span class=\"curtain-shimmer\" style=\"\n        position: absolute;\n        top: 0;\n        left: 0;\n        width: 100%;\n        height: 100%;\n        background: repeating-linear-gradient(\n          90deg,\n          transparent,\n          transparent 10px,\n          rgba(192, 132, 252, 0.03) 10px,\n          rgba(192, 132, 252, 0.03) 20px\n        );\n        animation: curtain-wave 2s linear infinite;\n        pointer-events: none;\n      \"></span>\n      <span class=\"spotlight\" style=\"\n        position: absolute;\n        top: -50%;\n        left: 50%;\n        transform: translateX(-50%);\n        width: 150%;\n        height: 200%;\n        background: radial-gradient(ellipse at center, rgba(192, 132, 252, 0.08) 0%, transparent 50%);\n        animation: spotlight-flicker 4s ease-in-out infinite;\n        pointer-events: none;\n      \"></span>\n    </summary>\n    <div style=\"\n      max-height: 300px;\n      overflow-y: auto;\n      padding: 12px 20px;\n      color: #cbd5e1;\n      line-height: 1.6;\n      transition: all 0.3s ease;\n      white-space: pre-wrap;\n      background: rgba(30, 27, 75, 0.4);\n      border-top: 1px solid rgba(192, 132, 252, 0.15);\n    \">\n    $1\n    </div>\n  </details>\n</div>\n\n<style>\n  .star-curtain-whisper::-webkit-scrollbar {\n    width: 6px;\n  }\n  .star-curtain-whisper::-webkit-scrollbar-track {\n    background: #1e1b4b;\n  }\n  .star-curtain-whisper::-webkit-scrollbar-thumb {\n    background: rgba(192, 132, 252, 0.3);\n    border-radius: 3px;\n  }\n  .star-curtain-whisper::-webkit-scrollbar-thumb:hover {\n    background: rgba(192, 132, 252, 0.5);\n  }\n\n  .star-curtain-whisper[open] {\n    box-shadow: \n      0 8px 32px rgba(168, 85, 247, 0.25),\n      inset 0 1px 0 rgba(192, 132, 252, 0.2) !important;\n    border-color: rgba(192, 132, 252, 0.5) !important;\n  }\n  .star-curtain-whisper[open] > div {\n    animation: curtainRise 0.4s ease forwards;\n  }\n\n  .star-curtain-whisper summary:hover {\n    background: rgba(168, 85, 247, 0.06);\n  }\n  .star-curtain-whisper[open] summary {\n    background: rgba(76, 29, 149, 0.3);\n  }\n  .star-curtain-whisper summary::marker {\n    display: none;\n  }\n\n  .star-curtain-whisper[open] .curtain-toggle::after {\n    content: attr(data-open);\n  }\n  .star-curtain-whisper:not([open]) .curtain-toggle::after {\n    content: attr(data-close);\n  }\n\n  @keyframes mask-sway {\n    0%, 100% {\n      transform: rotate(-3deg);\n    }\n    50% {\n      transform: rotate(3deg);\n    }\n  }\n\n  @keyframes curtain-wave {\n    0% {\n      transform: translateX(0);\n    }\n    100% {\n      transform: translateX(20px);\n    }\n  }\n\n  @keyframes spotlight-flicker {\n    0%, 100% {\n      opacity: 0.5;\n    }\n    50% {\n      opacity: 0.8;\n    }\n  }\n\n  @keyframes curtainRise {\n    from {\n      opacity: 0;\n      transform: translateY(-10px);\n    }\n    to {\n      opacity: 1;\n      transform: translateY(0);\n    }\n  }\n</style>",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": true,
+                        "promptOnly": false,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "61b777c5-6254-443d-89cc-b553bc6f723d",
+                        "scriptName": "04b-吐槽剧场隐藏",
+                        "findRegex": "/<details>\\s*<summary>\\s*🎭 秋青子&角色吐槽小剧场\\s*<\\/summary>\\s*(.*)\\s*<\\/details>/gsi",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "54d86d23-13c1-4684-9ca5-77e43ad0e377",
+                        "scriptName": "05-隐藏辅助标签",
+                        "findRegex": "/(<content>|<\\/content>)|(<safe>[\\s\\S]*?<\\/safe>)|(<recap>|<\\/recap>|<theater>|<\\/theater>)/gs",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": false,
+                        "markdownOnly": true,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "4b093653-3d45-4856-95b0-d8db36fd560f",
+                        "scriptName": "06-隐藏选项回复(2楼起)",
+                        "findRegex": "/<choice>[\\s\\S]*?<\\/choice>/gi",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            1,
+                            2
+                        ],
+                        "disabled": true,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": 2,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "021a48e4-2fc8-4c74-b4d4-3792442bf300",
+                        "scriptName": "01-无美化版本（二选一开）",
+                        "findRegex": "/(<content>|<\\/content>)|(.*?<\\/think(ing)?>(\\n)?)|(<think(ing)?>[\\s\\S]*?<\\/think(ing)?>(\\n)?)|(<safe>[\\s\\S]*?<\\/safe>)|(<recap>|<\\/recap>|<theater>|<\\/theater>)/gs",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": true,
+                        "markdownOnly": true,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "8aca4a8b-7ebd-4b5e-bdfc-808d6dcc4441",
+                        "scriptName": "02-小总结隐藏(前10轮)",
+                        "findRegex": "/<details>\\s*<summary>\\s*小总结\\s*<\\/summary>[\\s\\S]*?<\\/details>/gsi",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": true,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": 10
+                    },
+                    {
+                        "id": "18e7bb50-c165-4d73-93a6-1530804a60a4",
+                        "scriptName": "03-小总结去标签(11轮后)",
+                        "findRegex": "/([\\s\\S]*?<details>\\s*<summary>\\s*小总结\\s*<\\/summary>|<\\/details>[\\s\\S]*?$)/gs",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": true,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": 11,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "23979172-eb23-4f6f-bb12-78449083c106",
+                        "scriptName": "04-去吐槽剧场",
+                        "findRegex": "/<details>\\s*<summary>\\s*🎭 秋青子&角色吐槽小剧场\\s*<\\/summary>[\\s\\S]*?<\\/details>/gsi",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            2
+                        ],
+                        "disabled": true,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": null,
+                        "maxDepth": null
+                    },
+                    {
+                        "id": "23d3412e-da8a-4324-9ce7-20166c79a919",
+                        "scriptName": "06-隐藏选项回复(2楼起)",
+                        "findRegex": "/<choice>[\\s\\S]*?<\\/choice>/gi",
+                        "replaceString": "",
+                        "trimStrings": [],
+                        "placement": [
+                            1,
+                            2
+                        ],
+                        "disabled": true,
+                        "markdownOnly": false,
+                        "promptOnly": true,
+                        "runOnEdit": true,
+                        "substituteRegex": 0,
+                        "minDepth": 2,
+                        "maxDepth": null
+                    }
+                ]
+            },
+            "MacroNest": false
+        }
+    }
 }
